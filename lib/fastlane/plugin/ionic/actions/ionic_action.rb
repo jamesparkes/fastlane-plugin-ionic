@@ -83,6 +83,10 @@ module Fastlane
         args << '--device' if params[:device]
         args << '--prod' if params[:prod]
         args << '--browserify' if params[:browserify]
+        args << '--minifycss' if params[:minifycss]
+        args << '--optimizejs' if params[:optimizejs]
+        args << '--minifyjs' if params[:minifyjs]
+        args << '--aot' if params[:aot]
         android_args = self.get_android_args(params) if params[:platform].to_s == 'android'
         ios_args = self.get_ios_args(params) if params[:platform].to_s == 'ios'
 
@@ -246,6 +250,46 @@ module Fastlane
             description: "Specifies whether to browserify build or not",
             default_value: false,
             is_string: false
+          ),
+          FastlaneCore::ConfigItem.new(
+            key: :minifycss,
+            env_name: "CORDOVA_MINIFYCSS",
+            description: "Specifies whether to minify CSS for the build or not",
+            default_value: false,
+            is_string: false,
+            verify_block: proc do |value|
+              UI.user_error!("MinifyCSS should be boolean") unless [false, true].include? value
+            end
+          ),
+          FastlaneCore::ConfigItem.new(
+            key: :optimizejs,
+            env_name: "CORDOVA_OPTIMIZEJS",
+            description: "Specifies whether to optimize JavaScript for the build or not",
+            default_value: false,
+            is_string: false,
+            verify_block: proc do |value|
+              UI.user_error!("OptimizeJS should be boolean") unless [false, true].include? value
+            end
+          ),
+          FastlaneCore::ConfigItem.new(
+            key: :minifyjs,
+            env_name: "CORDOVA_MINIFYJS",
+            description: "Specifies whether to minify JavaScript for the build or not",
+            default_value: false,
+            is_string: false,
+            verify_block: proc do |value|
+              UI.user_error!("MinifyJS should be boolean") unless [false, true].include? value
+            end
+          ),
+          FastlaneCore::ConfigItem.new(
+            key: :aot,
+            env_name: "CORDOVA_AOT",
+            description: "Specifies whether to Ahead of Time compile for the build or not",
+            default_value: false,
+            is_string: false,
+            verify_block: proc do |value|
+              UI.user_error!("AOT should be boolean") unless [false, true].include? value
+            end
           ),
           FastlaneCore::ConfigItem.new(
             key: :cordova_prepare,

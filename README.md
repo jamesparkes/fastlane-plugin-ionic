@@ -106,6 +106,10 @@ Which will produce:
 | **keystore_alias**       | Android Keystore alias                                  | CORDOVA_ANDROID_KEYSTORE_ALIAS    |           |
 | **build_number**         | Build Number for iOS and Android                        | CORDOVA_BUILD_NUMBER              |           |
 | **browserify**           | Specifies whether to browserify build or not            | CORDOVA_BROWSERIFY                |  *false*  |
+| **minifycss**            | Specifies whether to minify CSS for the build or not    | CORDOVA_MINIFYCSS                 |  *false*  |
+| **optimizejs**           | Specifies whether to optimize Javascript for the build or not     | CORDOVA_OPTIMIZEJS                |  *false*  |
+| **minifyjs**             | Specifies whether to minify Javascript for the build or not       | CORDOVA_MINIFYJS                  |  *false*  |
+| **aot**                  | Specifies whether to Ahead of Time compile for the build or not   | CORDOVA_AOT                       |  *false*  |
 | **cordova_prepare**      | Specifies whether to run `ionic cordova prepare` before building  | CORDOVA_PREPARE               |  *true*   |
 
 ## Run tests for this plugin
