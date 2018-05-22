@@ -110,27 +110,26 @@ module Fastlane
         if params[:platform].to_s == 'ios'
           sh "node --max-old-space-size=8192 $(which ionic) cordova compile #{params[:platform]} #{args.join(' ')} -- #{ios_args}" 
         elsif params[:platform].to_s == 'android'
-          # sh "node --max-old-space-size=8192 $(which ionic) cordova compile #{params[:platform]} #{args.join(' ')} -- -- #{android_args}" 
-          sh "ls"
+          sh "node --max-old-space-size=8192 $(which ionic) cordova compile #{params[:platform]} #{args.join(' ')} -- -- #{android_args}" 
         end
       end
 
-      # # export build paths (run #3)
-      # def self.set_build_paths(is_release)
-      #   app_name = self.get_app_name
-      #   build_type = is_release ? 'release' : 'debug'
+      # export build paths (run #3)
+      def self.set_build_paths(is_release)
+        app_name = self.get_app_name
+        build_type = is_release ? 'release' : 'debug'
 
-      #   ENV['CORDOVA_ANDROID_RELEASE_BUILD_PATH'] = "./platforms/android/build/outputs/apk/android-#{build_type}.apk"
-      #   ENV['CORDOVA_IOS_RELEASE_BUILD_PATH'] = "./platforms/ios/build/device/#{app_name}.ipa"
+        ENV['CORDOVA_ANDROID_RELEASE_BUILD_PATH'] = "./platforms/android/build/outputs/apk/android-#{build_type}.apk"
+        ENV['CORDOVA_IOS_RELEASE_BUILD_PATH'] = "./platforms/ios/build/device/#{app_name}.ipa"
 
-      #   # TODO: https://github.com/bamlab/fastlane-plugin-cordova/issues/7
-      # end
+        # TODO: https://github.com/bamlab/fastlane-plugin-cordova/issues/7
+      end
 
-      # def self.run(params)
-      #   self.check_and_add_platform(params[:platform])
-      #   self.build(params)
-      #   self.set_build_paths(params[:release])
-      # end
+      def self.run(params)
+        self.check_and_add_platform(params[:platform])
+        self.build(params)
+        self.set_build_paths(params[:release])
+      end
 
       #####################################################
       # @!group Documentation
