@@ -108,7 +108,7 @@ module Fastlane
         end
 
         if params[:platform].to_s == 'ios'
-          sh "node --max-old-space-size=8192 $(which ionic) cordova compile #{params[:platform]} #{args.join(' ')} -- #{ios_args}" 
+          sh "node --max-old-space-size=8192 $(which ionic) cordova compile #{params[:platform]} #{args.join(' ')} -- #{ios_args} --buildConfig=build.json" 
         elsif params[:platform].to_s == 'android'
           sh "node --max-old-space-size=8192 $(which ionic) cordova compile #{params[:platform]} #{args.join(' ')} -- -- #{android_args}" 
         end
