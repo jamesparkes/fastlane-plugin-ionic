@@ -92,7 +92,7 @@ module Fastlane
 
         if params[:cordova_prepare]
           # TODO: Remove params not allowed/used for `prepare`
-          sh "node --max-old-space-size=8192 $(which ionic) cordova build #{params[:platform]} #{args.join(' ')} --buildConfig=build.json --buildFlag="-UseModernBuildSystem=0""
+          sh "node --max-old-space-size=8192 $(which ionic) cordova build #{params[:platform]} #{args.join(' ')} --buildConfig=build.json"
         end
 
         # special handling for `build_number` param
